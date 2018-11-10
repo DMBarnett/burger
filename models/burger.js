@@ -7,19 +7,22 @@ var burger = {
         });
     },
     createOne: function(burgName, cb){
-        orm.createOne(burgName, function(res){
+        orm.createOne(burgName, function(err, res){
             if(err) throw err;
             cb(res);
         })
     },
     updateOne: function(burgName, cb){
-        orm.updateOne(burgName, function(res){
+        console.log("Peach")
+        orm.updateOne(burgName, function(err, res){
+            console.log("pear")
+            console.log(err, res);
             if(err) throw err;
             cb(res);
         })
     },
     deleteOne: function(burgerId, cb){
-        orm.deleteOne(burgerId, function(res){
+        orm.deleteOne(burgerId, function(err, res){
             if(err) throw err;
             cb(res);
         })

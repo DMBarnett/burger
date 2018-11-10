@@ -4,46 +4,34 @@ var orm = {
     selectAll: function(cb){
         connection.query("SELECT * FROM burgers", function(err, result){
             if(err) throw err;
-            
-            console.log(result);
             cb(result);
         })
     },
     createOne: function(burgerName, cb){
-        // var foo;
-        // connection.query("SELECT * FROM burgers", function(err, result){
-        //     if(err) throw err;
-        //     foo = result;
-        // })
-        // foo.forEach(element => {
-        //     if(element.burger_name.toLowerCase() === burgerName.toLowerCase()){
-        //         console.log("Burger Already Exists");
-        //         return;
-        //     }
-        // });
-        var qString = "INSERT INTO burgers VALUES(?)";
+        console.log(burgerName);
+        var qString = "INSERT INTO burgers(burger_name) VALUES('"+burgerName+"')";
+
         connection.query(qString, [burgerName], function(err, result){
             if(err) throw err;
-            console.log(result);
-            cb(result);
+
+            cb(err, result);
         })
     },
     updateOne: function(burgerName, cb){
-        var qString = "UPDATE burgers SET devoured=1 WHERE burger_name = ?" 
-        console.log(qString);
-        console.log("here")
-        connection.query(qString, [burgerName], function(err, result){
+
+        var qString = "UPDATE burgers SET devoured="+burgerName.devoured+" WHERE id = "+ burgerName.id; 
+        connection.query(qString, function(err, result){
             if(err) throw err;
-            console.log(result);
-            cb(result);
+
+            cb(err, result);
         })
     },
     deleteOne: function(id, cb){
-        var qString = "DELETE FROM burgers WHERE id = ?";
-        connections.query(qString, [id], function(err, result){
+        var qString = "DELETE FROM burgers WHERE id = '"+id+"'";
+        connection.query(qString, function(err, result){
             if(err) throw err;
             console.log(result);
-            cb(result);
+            cb(err, result);
         })
     }
 }

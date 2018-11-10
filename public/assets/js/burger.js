@@ -6,7 +6,8 @@ $(function(){
         var dev = $(this).data("devour");
 
         var devState = {
-            devour: dev
+            devour: dev,
+            id: id
         }
 
         $.ajax("/api/burger/"+id, {
@@ -38,7 +39,7 @@ $(function(){
         event.preventDefault();
         var id = $(this).data("id");
 
-        $.ajax("/api/burger"+ id, {
+        $.ajax("/api/burgers/"+ id, {
             type: "DELETE"
         }).then(function(){
             console.log("Removed Burger", id);
