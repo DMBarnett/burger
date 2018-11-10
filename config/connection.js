@@ -15,7 +15,6 @@ var connection = mysql.createConnection({
     database: "burgers_db"
 })
 
-console.log("Peach")
 
 connection.connect(function(err){
     if(err) throw err;
