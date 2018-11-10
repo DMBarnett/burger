@@ -7,7 +7,7 @@
             <ul>
                 {{#each burger}}
                     {{#unless devoured}}
-                        {{> /partials/burgerBarButton devour=0}}
+                        {{> burgerBarButtons devour=0}}
                     {{/unless}}
                 {{/each}}
             </ul>
@@ -15,9 +15,9 @@
         <div class="col-6">
             <h3>Burgers DEVOURED</h3>
             {{#each burger}}
-                {{#unless !devoured}}
-                    {{> /partials/burgerBarButton devour=1}}
-                {{/unless}}
+                {{#if devoured}}
+                    {{> burgerBarButtons devour=1}}
+                {{/if}}
             {{/each}}
         </div>
     </div>

@@ -14,7 +14,18 @@ router.get("/", function(req, res){
 });
 
 router.post("/api/burger", function(req, res){
-    burger.createOne(["burger_name"], [res.body.newBurger], function(result){res.json({id: result.id})})
+    burger.createOne(
+        ["burger_name"], 
+        [res.body.newBurger],
+        function(result){
+            res.json({id: result.id})
+        })
 })
 
+router.put("/api/burger/:id", function(req, res){
+    var foo = "id= " + req.params.id;
+    burger.updateOne({
+        
+    })
+})
 module.exports = router;
