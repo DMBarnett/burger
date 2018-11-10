@@ -13,6 +13,8 @@ router.get("/", function(req, res){
     });
 });
 
-
+router.post("/api/burger", function(req, res){
+    burger.createOne(["burger_name"], [res.body.newBurger], function(result){res.json({id: result.id})})
+})
 
 module.exports = router;

@@ -9,7 +9,7 @@ var orm = {
             cb(result);
         })
     },
-    insertOne: function(burgerName, cb){
+    createOne: function(burgerName, cb){
         var foo;
         connection.query("SELECT * FROM burgers", function(err, result){
             if(err) throw err;
